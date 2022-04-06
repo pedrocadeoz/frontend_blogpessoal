@@ -1,9 +1,28 @@
-import React from "react";
-import {Typography, Box, Grid, Button} from '@material-ui/core';
-import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem';
-import "./Home.css";
+import React, { useEffect } from "react";
+import {Typography, Box, Grid, Button} from '@material-ui/core'
+import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem'
+import "./Home.css"
+import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { TokenState } from '../../store/tokens/tokenReducer';
+import {Link} from "react-router-dom";
 
-function Home (){
+
+function Home (): JSX.Element{
+    let history = useHistory();
+    const token = useSelector < TokenState, TokenState["tokens"]> (
+        (state) => state.tokens
+    );
+    
+    useEffect(() => {
+      if (token == "") {
+          alert("Você precisa estar logado")
+          history.push("/login")
+  
+      }
+  }, [token])
+  
     return(
         <>
         
@@ -15,8 +34,13 @@ function Home (){
                     </Box>
                     <Box display="flex" justifyContent="center">
                         <Box marginRight={1}>
+
+                        <ModalPostagem />
+
                         </Box>
+                        <Link to="/posts" className = 'text-decorator-none'>
                         <Button variant="outlined" className = 'botao'>Ver Postagens</Button>
+                        </Link>
                     </Box>
                 </Grid>
                 <Grid item xs={6} >
