@@ -1,24 +1,27 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Navbar from './components/estaticos/navbar/Navbar';
-import Footer from './components/estaticos/footer/Footer';
-import CadastroUsuario from './paginas/cadastroUsuarios/CadastroUsuario';
-import Home from './paginas/home/Home';
-import Login from './paginas/login/Login';
-import ListaTema from './components/temas/listatema/ListaTema';
-import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
-import CadastroPost from './components/postagens/cadastroPost/CadastroPost';
-import CadastroTema from './components/temas/cadastroTema/CadastroTema';
-import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem';
-import DeletarTema from './components/temas/deletarTema/DeletarTema';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Navbar from './components/estaticos/navbar/Navbar'
+import Footer from './components/estaticos/footer/Footer'
+import CadastroUsuario from './paginas/cadastroUsuarios/CadastroUsuario'
+import Home from './paginas/home/Home'
+import Login from './paginas/login/Login'
+import ListaTema from './components/temas/listatema/ListaTema'
+import ListaPostagem from './components/postagens/listapostagem/ListaPostagem'
+import CadastroPost from './components/postagens/cadastroPost/CadastroPost'
+import CadastroTema from './components/temas/cadastroTema/CadastroTema'
+import DeletarPostagem from './components/postagens/deletarPostagem/DeletarPostagem'
+import DeletarTema from './components/temas/deletarTema/DeletarTema'
 import './App.css';
-import { Provider } from 'react-redux';
-import store from './store/store';
+import { Provider } from 'react-redux'
+import store from './store/store'
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function App() {
   return (
     <Provider store={store}>
+      <ToastContainer />
     <Router>
       <Navbar />
         <Switch>

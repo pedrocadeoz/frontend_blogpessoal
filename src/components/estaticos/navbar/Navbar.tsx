@@ -1,12 +1,12 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Box } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Box } from '@material-ui/core'
 import { Link } from 'react-router-dom';
 import {useHistory } from 'react-router-dom'
-import useLocalStorage from 'react-use-localstorage';
 import './Navbar.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/tokenReducer';
-import { addToken } from '../../../store/tokens/actions';
+import { useDispatch, useSelector } from 'react-redux'
+import { TokenState } from '../../../store/tokens/tokenReducer'
+import { addToken } from '../../../store/tokens/actions'
+import {toast} from 'react-toastify'
 
 function Navbar() {
     let history = useHistory();
@@ -16,8 +16,17 @@ function Navbar() {
     const dispatch = useDispatch();
     
     function goLogout(){
-        dispatch(addToken(''))
-        alert("Usuário deslogado")
+        dispatch(addToken(''));
+        toast.info('Usuário deslogado', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            theme: "dark",
+            progress: undefined,
+        });
         history.push('/login')
     }
 

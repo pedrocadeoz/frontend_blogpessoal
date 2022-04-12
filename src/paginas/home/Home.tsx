@@ -2,11 +2,12 @@ import React, { useEffect } from "react";
 import {Typography, Box, Grid, Button} from '@material-ui/core'
 import TabPostagem from '../../components/postagens/tabpostagem/TabPostagem'
 import "./Home.css"
-import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem";
-import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { TokenState } from '../../store/tokens/tokenReducer';
-import {Link} from "react-router-dom";
+import ModalPostagem from "../../components/postagens/modalPostagem/ModalPostagem"
+import { useHistory } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { TokenState } from '../../store/tokens/tokenReducer'
+import {Link} from "react-router-dom"
+import {toast} from 'react-toastify'
 
 
 function Home (): JSX.Element{
@@ -17,10 +18,18 @@ function Home (): JSX.Element{
     
     useEffect(() => {
       if (token == "") {
-          alert("Você precisa estar logado")
-          history.push("/login")
-  
-      }
+            toast.error('VocÊ precisa estar logado!', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "dark",
+                progress: undefined,
+            });
+            history.push('/login')
+        }
   }, [token])
   
     return(
